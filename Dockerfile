@@ -10,16 +10,17 @@ RUN apt-get update \
     && apt-get install wget -y \
 
     # Download & Install Disk.Yandex
-    && echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex-disk.list > /dev/null \
-    && wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - \
-    && apt-get update \
-    && sudo apt-get install -y yandex-disk \
+    && wget https://repo.yandex.ru/yandex-disk/yandex-disk_latest_amd64.deb \
+    && dpkg -i yandex-disk_latest_amd64.deb \
+    && apt-get install -f -y \
 
     # Cleanup
+    && rm *.deb \
+    && apt-get purge -y \
     && apt-get autoremove -y \
     && apt-get autoclean -y \
 
     && mkdir /root/Yandex.Disk
 
-ENTRYPOINT ["/yandex-disk.sh"]
+ENTRYPOINT ["yandex-disk"]
 CMD ["start", "--no-daemon", "--dir=/root/Yandex.Disk"]
