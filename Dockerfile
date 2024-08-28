@@ -21,7 +21,5 @@ RUN apt-get update \
 
     && mkdir /root/Yandex.Disk
 
-ENTRYPOINT ["yandex-disk"]
 ENTRYPOINT ["/yandex-disk.sh"]
-CMD ["/opt/dropbox/bin/dropboxd"]
 CMD ["start", "--no-daemon", "--dir=/root/Yandex.Disk"]
