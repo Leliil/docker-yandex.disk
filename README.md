@@ -136,4 +136,4 @@ docker logs -f yandex-disk-container
 
 ---
 
-Если у вас есть вопросы или предложения, создайте [issue](https://github.com/ваш-username/ваш-репозиторий/issues) в этом репозитории.
+Если у вас есть вопросы или предложения, создайте [issue](https://github.com/Leliil/docker-yandex.disk/issues) в этом репозитории.
