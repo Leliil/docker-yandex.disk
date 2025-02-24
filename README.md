@@ -67,11 +67,11 @@
 Запустите контейнер с помощью Docker CLI:
 
     ```bash
-docker run -d \
-  --name yandex-disk-container \
-  -v /path/to/local/config:/root/.config/yandex-disk \
-  -v /path/to/local/data:/root/Yandex.Disk \
-  yandex-disk-optimized
+    docker run -d \
+    --name yandex-disk-container \
+    -v /path/to/local/config:/root/.config/yandex-disk \
+    -v /path/to/local/data:/root/Yandex.Disk \
+    yandex-disk-optimized
 
 ### Использование Docker Compose
 
