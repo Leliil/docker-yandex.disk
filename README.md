@@ -38,7 +38,7 @@
       ```bash
       docker run -it --rm \
       -v /path/to/local/config:/root/.config/yandex-disk \
-      yandex-disk-optimized yandex-disk setup
+      yandex-disk yandex-disk setup
 
    - Следуйте инструкциям на экране, чтобы авторизоваться и настроить Yandex.Disk.
 
@@ -52,10 +52,10 @@
 
    ```bash
    docker run -d \
-   --name yandex-disk-container \
+   --name yandex-disk \
    -v /path/to/local/config:/root/.config/yandex-disk \
    -v /path/to/local/data:/root/Yandex.Disk \
-   yandex-disk-optimized
+   yandex-disk
    ```
 
 ### Использование Docker Compose
@@ -74,7 +74,7 @@
 ### В Portainer
 
 1. Перейдите в раздел **Containers**.
-2. Выберите контейнер `yandex-disk-container`.
+2. Выберите контейнер `yandex-disk`.
 3. Нажмите **Logs**, чтобы просмотреть логи.
 
 ### Через Docker CLI
@@ -82,7 +82,7 @@
 Используйте команду:
 
    ```bash
-   docker logs -f yandex-disk-container
+   docker logs -f yandex-disk
    ```
 
 ---
@@ -94,13 +94,13 @@
 1. Остановите контейнер:
 
    ```bash
-   docker stop yandex-disk-container
+   docker stop yandex-disk
    ```
 
 2. Удалите контейнер:
 
    ```bash
-   docker rm yandex-disk-container
+   docker rm yandex-disk
    ```
 
 3. Пересоберите образ (если необходимо):
