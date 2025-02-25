@@ -8,4 +8,4 @@ fi
 
 # Запускаем Yandex.Disk в режиме демона и перенаправляем логи в stdout
 echo "Запуск Yandex.Disk в режиме демона..."
-yandex-disk start --dir=/root/Yandex.Disk --daemon --log-file=/dev/stdout
+yandex-disk start --dir=/root/Yandex.Disk --no-daemon --log-file=/dev/stdout
