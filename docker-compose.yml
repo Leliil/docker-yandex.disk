@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   yandex-disk:
-    image: yandex-disk-optimized  # Имя образа, который мы собрали ранее
-    container_name: yandex-disk-container
+    image: leliil/yandex.disk:latest
+    container_name: yandex-disk
     restart: unless-stopped  # Автоматически перезапускать контейнер при сбоях
     volumes:
       - /path/to/local/config:/root/.config/yandex-disk  # Монтируем директорию с конфигурацией
