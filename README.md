@@ -30,6 +30,7 @@
    ```bash
    mkdir -p /path/to/local/config  # Для конфигурации
    mkdir -p /path/to/local/data    # Для данных Yandex.Disk
+   ```
 
 2. Настройте Yandex.Disk:
 
@@ -38,7 +39,8 @@
       ```bash
       docker run -it --rm \
       -v /path/to/local/config:/root/.config/yandex-disk \
-      yandex-disk yandex-disk setup
+      leliil/yandex.disk yandex-disk setup
+      ```
 
    - Следуйте инструкциям на экране, чтобы авторизоваться и настроить Yandex.Disk.
 
@@ -55,7 +57,7 @@
    --name yandex-disk \
    -v /path/to/local/config:/root/.config/yandex-disk \
    -v /path/to/local/data:/root/Yandex.Disk \
-   yandex-disk
+   leliil/yandex.disk
    ```
 
 ### Использование Docker Compose
@@ -66,6 +68,7 @@
 
    ```bash
    docker-compose up -d
+   ```
 
 ---
 
@@ -106,7 +109,7 @@
 3. Пересоберите образ (если необходимо):
 
    ```bash
-   docker build -t yandex-disk-optimized .
+   docker build -t leliil/yandex.disk .
    ```
 
 4. Запустите контейнер снова, как описано в разделе [Запуск](#запуск).
