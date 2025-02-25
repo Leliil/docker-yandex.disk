@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  yandex-disk:
+    image: yandex-disk-optimized  # Имя образа, который мы собрали ранее
+    container_name: yandex-disk-container
+    restart: unless-stopped  # Автоматически перезапускать контейнер при сбоях
+    volumes:
+      - /path/to/local/config:/root/.config/yandex-disk  # Монтируем директорию с конфигурацией
+      - /path/to/local/data:/root/Yandex.Disk  # Монтируем директорию для данных Yandex.Disk
+    environment:
+      - TZ=Europe/Moscow  # Указываем временную зону (опционально)
+    logging:
+      driver: json-file  # Используем драйвер логов, который поддерживает Portainer
+      options:
+        max-size: "10m"  # Ограничиваем размер логов
+        max-file: "3"    # Ограничиваем количество файлов логов
