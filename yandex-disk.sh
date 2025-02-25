@@ -1,8 +1,11 @@
 #!/bin/bash
 
-if [ ! -f /.config/yandex-disk/config.cfg ]; then
+# Создаем конфигурацию, если она отсутствует
+if [ ! -f /root/.config/yandex-disk/config.cfg ]; then
+    echo "Конфигурация не найдена. Запуск настройки..."
     yandex-disk setup
-else
-  yandex.disk
 fi
-exit 0
+
+# Запускаем Yandex.Disk в режиме демона и перенаправляем логи в stdout
+echo "Запуск Yandex.Disk в режиме демона..."
+yandex-disk start --dir=/root/Yandex.Disk --daemon --log-file=/dev/stdout

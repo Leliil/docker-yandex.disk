@@ -1,26 +1,26 @@
-FROM debian
+# Используем минималистичный образ Debian Slim
+FROM debian:12-slim
 
-MAINTAINER Alexander Bedarev <bedarev69@gmail.com>
+# Указываем метаданные
+LABEL maintainer="Alexander Bedarev <bedarev69@gmail.com>"
 
-RUN apt-get update \
+# Устанавливаем зависимости и Yandex.Disk
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends wget ca-certificates && \
+    wget https://repo.yandex.ru/yandex-disk/yandex-disk_latest_amd64.deb && \
+    dpkg -i yandex-disk_latest_amd64.deb && \
+    apt-get install -f -y --no-install-recommends && \
+    # Очищаем кэш и временные файлы
+    apt-get purge -y wget && \
+    apt-get autoremove -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* yandex-disk_latest_amd64.deb && \
+    # Создаем директорию для Yandex.Disk
+    mkdir -p /root/Yandex.Disk
 
-    # Upgrade & Install wget
-    && apt-get upgrade -y \
-    && apt-get dist-upgrade -y \
-    && apt-get install wget -y \
+# Копируем скрипт инициализации
+COPY yandex-disk.sh /usr/local/bin/yandex-disk.sh
+RUN chmod +x /usr/local/bin/yandex-disk.sh
 
-    # Download & Install Disk.Yandex
-    && wget https://repo.yandex.ru/yandex-disk/yandex-disk_latest_amd64.deb \
-    && dpkg -i yandex-disk_latest_amd64.deb \
-    && apt-get install -f -y \
-
-    # Cleanup
-    && rm *.deb \
-    && apt-get purge -y \
-    && apt-get autoremove -y \
-    && apt-get autoclean -y \
-
-    && mkdir /root/Yandex.Disk
-
-ENTRYPOINT ["yandex-disk"]
-CMD ["start", "--no-daemon", "--dir=/root/Yandex.Disk"]
+# Указываем точку входа
+ENTRYPOINT ["yandex-disk.sh"]
