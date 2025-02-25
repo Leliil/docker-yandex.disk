@@ -51,10 +51,10 @@
 
    - Запустите контейнер для настройки:
 
-     ```bash
-     docker run -it --rm \
-       -v /path/to/local/config:/root/.config/yandex-disk \
-       yandex-disk-optimized yandex-disk setup
+      ```bash
+      docker run -it --rm \
+      -v /path/to/local/config:/root/.config/yandex-disk \
+      yandex-disk-optimized yandex-disk setup
 
    - Следуйте инструкциям на экране, чтобы авторизоваться и настроить Yandex.Disk.
 
@@ -66,12 +66,12 @@
 
 Запустите контейнер с помощью Docker CLI:
 
-    ```bash
-    docker run -d \
-    --name yandex-disk-container \
-    -v /path/to/local/config:/root/.config/yandex-disk \
-    -v /path/to/local/data:/root/Yandex.Disk \
-    yandex-disk-optimized
+   ```bash
+   docker run -d \
+   --name yandex-disk-container \
+   -v /path/to/local/config:/root/.config/yandex-disk \
+   -v /path/to/local/data:/root/Yandex.Disk \
+   yandex-disk-optimized
 
 ### Использование Docker Compose
 
@@ -97,7 +97,7 @@
 Используйте команду:
 
     ```bash
-docker logs -f yandex-disk-container
+   docker logs -f yandex-disk-container
 
 ---
 
