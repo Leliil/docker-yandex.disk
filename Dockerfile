@@ -15,10 +15,12 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* yandex-disk_latest_amd64.deb && \
-    # Создаем директорию для Yandex.Disk
-    mkdir -p /root/Yandex.Disk
+    # Создаем директорию для Yandex.Disk и конфигурации
+    mkdir -p /root/Yandex.Disk && \
+    mkdir -p /root/.config/yandex-disk
 
-# Копируем скрипт инициализации
+# Копируем конфигурацию и скрипт инициализации
+COPY config.cfg /root/.config/yandex-disk/config.cfg
 COPY yandex-disk.sh /usr/local/bin/yandex-disk.sh
 RUN chmod +x /usr/local/bin/yandex-disk.sh
 
